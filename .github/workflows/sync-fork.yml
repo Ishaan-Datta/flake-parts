@@ -1,0 +1,40 @@
+name: Sync Upstream
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      
+      - name: Update Branch
+        run: |
+          git remote add flake-parts https://github.com/hercules-ci/flake-parts.git
+          git fetch flake-parts
+          git reset --hard flake-parts/master
+
+      - name: Apply Patches
+        run: |
+          if ! git cherry-pick <thing>; then
+            exit 1
+          fi
+
+          git push origin HEAD:master --force-with-lease
+
+
