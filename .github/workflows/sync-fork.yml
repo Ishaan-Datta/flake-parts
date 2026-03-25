@@ -31,7 +31,7 @@ jobs:
 
       - name: Apply Patches
         run: |
-          if ! git cherry-pick <thing>; then
+          if ! git cherry-pick d9c5f94f6c97d498f1ae9b1d35f6fff4d6610911; then
             exit 1
           fi
 
