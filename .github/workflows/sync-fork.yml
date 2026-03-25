@@ -27,7 +27,7 @@ jobs:
         run: |
           git remote add flake-parts https://github.com/hercules-ci/flake-parts.git
           git fetch flake-parts
-          git reset --hard flake-parts/master
+          git reset --hard flake-parts/main
 
       - name: Apply Patches
         run: |
