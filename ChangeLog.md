@@ -4,6 +4,8 @@
    It now imports the [`modules` module] so as to make
    output attribute `<your-flake>.modules.flake` available to module consumers.
 
+ - The opt-in modules are now also available as `inputs.flake-parts.modules.flake.<name>`.
+
 # 2026-05-04
 
  - Add [`touchup`] module
