@@ -40,7 +40,7 @@ in
           (mkAliasOptionModule [ "flakeModule" ] [ "flakeModules" "default" ])
           ({ config, ... }: {
             options.flakeModules = flakeModulesOption;
-            config.modules.flake = config.flakeModules;
+            config.modules.flake = lib.mkDefault config.flakeModules;
           })
         ];
       };
